@@ -1,0 +1,44 @@
+{
+    "name": "mts-syntax",
+    "displayName": "MapTool Macro file TextMate Grammar",
+    "description": "TextMate Grammar that highlights MapTool macro text",
+    "icon": "",
+    "repository": {
+        "url": "https://github.com/eCyclopsmts-syntax.git"
+    },
+    "publisher": "eCyclops",
+    "license": "MIT",
+    "version": "1.0",
+    "engines": {
+        "vscode": "^1.22.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "MapTool",
+        "Grammar",
+        "Syntax"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "mts",
+                "aliases": [
+                    "MapTool Macro"
+                ],
+                "configuration": "./language-configuration.json",
+                "extensions": [
+                    ".mts"
+                ]
+            }
+        ],
+        "grammars": [
+            {
+                "language": "mts",
+                "scopeName": "source.mts",
+                "path": "./syntaxes/mts.tmLanguage."
+            }
+        ]
+    }
+}

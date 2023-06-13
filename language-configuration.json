@@ -1,0 +1,166 @@
+{
+    "fileTypes": [
+      "rpmacro"
+    ],
+    "name": "MapTool Macro",
+    "patterns": [
+      {
+        "begin": "(\\[)",
+        "beginCaptures": {
+          "1": {
+            "name": "entity.name.tag.macro.maptool"
+          }
+        },
+        "end": "(\\])",
+        "endCaptures": {
+          "1": {
+            "name": "entity.name.tag.macro.maptool"
+          }
+        },
+        "name": "meta.macro.maptool",
+        "patterns": [
+          {
+            "include": "#macro-options"
+          },
+          {
+            "include": "#operators"
+          },
+          {
+            "include": "#keywords"
+          },
+          {
+            "include": "#constants"
+          },
+          {
+            "include": "#codeblock"
+          },
+          {
+            "include": "#support-functions"
+          },
+          {
+            "include": "#json-functions"
+          },
+          {
+            "include": "#support-types"
+          },
+          {
+            "include": "#support-variables"
+          },
+          {
+            "include": "#numbers"
+          },
+          {
+            "include": "#rolls"
+          },
+          {
+            "include": "#parameters"
+          },
+          {
+            "include": "#variables"
+          },
+          {
+            "include": "#string-single"
+          },
+          {
+            "include": "#string-double"
+          },
+          {
+            "include": "text.html.basic"
+          },
+          {
+            "include": "$self"
+          }
+        ]
+      },
+      {
+        "include": "text.html.basic"
+      }
+    ],
+    "repository": {
+      "codeblock": {
+        "begin": "(\\{)",
+        "beginCaptures": {
+          "1": {
+            "name": "entity.name.tag.codeblock.maptool"
+          }
+        },
+        "end": "(\\})",
+        "endCaptures": {
+          "1": {
+            "name": "entity.name.tag.codeblock.maptool"
+          }
+        },
+        "name": "meta.codeblock.maptool",
+        "patterns": [
+          {
+            "include": "$self"
+          }
+        ]
+      },
+      "constants": {
+        "match": "\\b(true|false)\\b",
+        "name": "constant.language.maptool"
+      },
+      "json-functions": {
+        "match": "\\b(?<=json\\.)(append|contains|count|difference|equals|evaluate|fields|fromList|fromStrProp|get|indent|indexOf|intersection|isEmpty|isSubset|length|merge|remove|removeAll|reverse|set|shuffle|sort|toList|toStrProp|type|union|unique)\\b(?=\\()",
+        "name": "support.function.json.maptool"
+      },
+      "keywords": {
+        "match": "\\b(code|for|foreach|if|switch|while|default)\\b",
+        "name": "keyword.control.maptool"
+      },
+      "macro-options": {
+        "captures": {
+          "1": {
+            "name": "keyword.control.roll.display.maptool"
+          }
+        },
+        "match": "(?<=\\[)\\b(e|expanded|g|gm|gt|gmtt|h|hide|hidden|r|result|s|self|st|selftt|t|tooltip|u|unformatted|w|whisper|c|count)\\b(?=[,:])",
+        "name": "support.constant.maptool"
+      },
+      "numbers": {
+        "match": "\\b([0-9]+|[0-9]+\\.[0-9]+)\\b",
+        "name": "constant.numeric.maptool"
+      },
+      "operators": {
+        "match": "([\\-\\(\\)\\*\\,\\.\\/\\:\\;\\+\\<\\=\\>]|\\|\\||\\&\\&|\\<\\=|\\>\\=|\\!\\=|\\=\\=)",
+        "name": "keyword.operator.maptool"
+      },
+      "parameters": {
+        "match": "(?<=[\\(\\,])[ ]*?\\b([0-9.]+[a-zA-Z0-9_.]+?|[a-zA-Z0-9_.]+?[0-9]+|[a-zA-Z0-9_.]+?[0-9]+[a-zA-Z0-9_.]+?|[0-9]+[a-zA-Z0-9_.]+?[0-9]+)\\b[ ]*(?=[\\)\\,])",
+        "name": "variable.parameter.maptool"
+      },
+      "rolls": {
+        "match": "\\b([0-9]+)(d[0-9]+|d[fu]|sr4)([dkrsg][0-9]+)?([eohb])?([dkrsg][0-9]+)?([eohb])?\\b",
+        "name": "support.other.maptool"
+      },
+      "string-double": {
+        "begin": "\"",
+        "end": "\"",
+        "name": "string.quoted.double.maptool"
+      },
+      "string-single": {
+        "begin": "'",
+        "end": "'",
+        "name": "string.quoted.single.maptool"
+      },
+      "support-functions": {
+        "match": "\\b(abort|abs|absolutevalue|absolutevalue|add|addAllNPCsToInitiative|addAllPCsToInitiative|addAllToInitiative|addToInitiative|arg|argCount|assert|average|avg|band|bitwiseand|bitwisenot|bitwiseor|bitwisexor|bnot|bor|bringToFront|broadcast|bxor|canSeeToken|ceil|ceiling|clearLights|closeDialog|closeFrame|concat|copyToken|countStrProp|countsuccess|createMacro|currentToken|d|decode|defineFunction|deleteStrProp|deselectTokens|dialog|dice|divide|drawVBL|drop|encode|endsWith|eraseVBL|eval|evalMacro|execLink|execMacro|explode|explodingSuccess|exposeFOW|exposePCOnlyArea|f|findToken|floor|formatStrProp|frame|fudge|getAllMapNames|getAllPlayerNames|getAllPropertyNames|getBar|getCurrentInitiative|getCurrentMapName|getDistance|getDistanceToXY|getExposedTokenNames|getExposedTokens|getFindCount|getGMName|getGMNotes|getGroup|getGroupCount|getGroupEnd|getGroupStart|getHalo|getImage|getImpersonated|getImpersonatedName|getInfo|getInitiative|getInitiativeHold|getInitiativeList|getInitiativeRound|getInitiativeToken|getLabel|getLastPath|getLayer|getLibProperty|getLights|getMacroButtonIndex|getMacroCommand|getMacroGroup|getMacroIndexes|getMacroLocation|getMacroName|getMacroProps|getMacros|getMatchingLibProperties|getMatchingProperties|getMoveCount|getName|getNotes|getNPC|getNPCNames|getOwned|getOwnedNames|getOwnerOnlyVisible|getOwners|getPC|getPCNames|getPlayerName|getProperty|getPropertyDefault|getPropertyNames|getPropertyNamesRaw|getPropertyType|getRawProperty|getSelected|getSelectedNames|getSightType|getSize|getSpeech|getSpeechNames|getState|getStateImage|getStrProp|getTokenDrawOrder|getTokenFacing|getTokenGMName|getTokenHalo|getTokenHandout|getTokenHeight|getTokenImage|getTokenLabel|getTokenNames|getTokenPortrait|getTokens|getTokenShape|getTokenStates|getTokenWidth|getTokenX|getTokenY|getVBL|getVisible|getVisibleMapNames|getVisibleTokenNames|getVisibleTokens|getWithState|getWithStateNames|getZoom|goto|hasImpersonated|hasLightSource|hasMacro|hasProperty|hasSight|hero|herobody|herostun|hex|hypot|hypotenuse|if|indexKeyStrProp|indexOf|indexValueStrProp|initiativeSize|input|isBarVisible|isDialogVisible|isFrameVisible|isFunctionDefined|isGM|isNPC|isNumber|isOwnedByAll|isOwner|isPC|isPropertyEmpty|isSnapToGrid|isTrusted|isVisible|keep|lastIndexOf|length|listAppend|listContains|listCount|listDelete|listFind|listFormat|listGet|listInsert|listReplace|listSort|ln|log|log10|lower|macro|macroLink|macroLinkText|matches|max|mean|median|min|mod|movedOverPoints|movedOverToken|moveToken|moveTokenFromMap|moveTokenToMap|multiply|nextInitiative|number|oldFunction|openTest|pow|power|removeAllFromInitiative|removeAllNPCsFromInitiative|removeAllPCsFromInitiative|removeFromInitiative|removeMacro|removeToken|removeTokenFacing|replace|reroll|resetFrame|resetProperty|roll|round|selectTokens|sendToBack|set|setAllStates|setBar|setBarVisible|setCurrentInitiative|setCurrentMap|setGMName|setGMNotes|setHalo|setHasSight|setInitiative|setInitiativeHold|setInitiativeRound|setLabel|setLayer|setLibProperty|setLight|setMacroCommand|setMacroProps|setName|setNotes|setNPC|setOwner|setOwnerOnlyVisible|setPC|setProperty|setPropertyType|setSightType|setSize|setSpeech|setState|setStrProp|setTokenDrawOrder|setTokenFacing|setTokenGMName|setTokenHandout|setTokenImage|setTokenLabel|setTokenPortrait|setTokenShape|setViewArea|setVisible|setZoom|sortInitiative|sqr|sqrt|square|squareroot|sr4|sr4e|startsWith|strfind|strformat|string|stringToList|strPropFromVars|substring|subtract|success|sum|switchToken|table|tableImage|tbl|tblImage|trim|u|ubiquity|upper|varsFromStrProp)\\b(?=\\()",
+        "name": "support.function.maptool"
+      },
+      "support-types": {
+        "match": "\\b(json)(?=\\.)\\b",
+        "name": "support.type.maptool"
+      },
+      "support-variables": {
+        "match": "\\b(?:(bar|macro|roll|state|token|tokens(?=\\.[a-zA-Z]+))|(?<=bar\\.)(name)|(?<=macro\\.)(return|args)|(?<=roll\\.)(count|result)|(?<=state\\.)(name)|(?<=token\\.)(gm_name|halo|init|initHold|label|name|visible)|(?<=tokens\\.)(denyMove|moveCount))\\b",
+        "name": "support.variable.maptool"
+      },
+      "variables": {
+        "match": "(?:[a-z]+\\: ?)?([a-zA-Z_.]+)(?= ?=?)",
+        "name": "variable.other.maptool"
+      }
+    },
+    "scopeName": "source.maptool.macro",
+    "uuid": "8AE701DB-A91C-463D-8F81-F0EE8A7B5631"
+  }
